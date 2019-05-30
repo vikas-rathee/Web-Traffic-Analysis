@@ -1,0 +1,105 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Almendra" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Exo:800" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='style.css') }}">
+  <title>Web Traffic Prediction using Machine Learning</title>
+</head>
+<body>
+  <section class="section-main">
+    <div class="bg-video">
+      <video class="bg-video__content" autoplay loop muted>
+        <source src="{{ url_for ('static', filename='./videos/bg-video.ogv') }}" type="video/ogv"></source>
+        <source src="{{ url_for ('static', filename='./videos/bg-video.mp4') }}" type="video/mp4"></source>
+        <source src="{{ url_for ('static', filename='./videos/bg-video.webm') }}" type="video/webm"></source>
+        Your browser does not support video tag
+      </video>
+    </div>
+    <div class="main-heading-box">
+      <div class="main-heading main-heading-white"> Web Traffic Prediction with Machine Learning using Regression</div>
+      <a class="btn btn-main btn-blue" href="#section-description">objective</a>
+    </div>
+  </section>
+
+  <section class="section-description" id="section-description">
+      <div class="trans-box">
+        <div class="main-heading-yellow">OBJECTIVE</div>
+        <div class="description-content">The main aim of the project is to extrapolate the future visitors of YMCAUST website using the past visitors data with the help of Regression algorithms(Linear and Polynomial) of Machine Learning.</div>
+        <a class="btn btn-main btn-blue" href="#section-LR">What's Linear Regression?</a>
+      </div>
+  </section>
+
+  <section class="section-LR" id="section-LR">
+    <div class="LR-box">
+      <div class="main-heading-yellow">Linear Regression</div>
+      <div class="LR-content">
+        In linear regression, the model targets to get the best-fit regression line to predict the value of y based on the given input value (x). While training the model, the model calculates the cost function which measures the Root Mean Squared error between the predicted value (pred) and true value (y). The model targets to minimize the cost function.
+   			,y = mx + c (basic equation of line)<br>
+  We start with c and m with 0 then find the best possible values using gradient descent.
+      </div>
+      <img src="{{ url_for ('static', filename='./images/gradient_descent_example.gif') }}" alt="Gradient Descent Working" class="grad-descent">
+    </div>
+  </section>
+
+  <section class="section-train-data">
+    <div class="trans-box">
+      <div class="main-heading-yellow">Training Data</div>
+      <img class="graph" src="{{ url_for ('static', filename='./images/data_clean.png') }}" alt="train-data">
+    </div>
+  </section>
+
+  <section class="section-train-models">
+    <div class="trans-box">
+      <div class="main-heading-yellow">Fitting models to data</div>
+      <img class="graph" src="{{ url_for ('static', filename='./images/data_100.png') }}" alt="train-data">
+    </div>
+  </section>
+
+  <section class="section-fitting">
+    <div class="LR-box">
+      <div class="main-heading-yellow">Underfitting</div>
+      <div class="fitting-content">The lower degree models (that is for degree 1, 2 and 3) does not seem to be capable of capturing the data good enough and thus have large error. So these models can’t be used for extrapolating into the future.
+      <br>This is known as Underfitting.
+      </div>
+      <div class="main-heading-yellow" style="margin-top: 5rem;">Overfitting</div>
+      <div class="fitting-content">The higher degree models (that is for degree 10 and 60) are so much modelled according to the data such that they are also capturing the noisy data. So these models can’t be used for extrapolation.
+      <br>This is known as Overfitting.
+      <br>
+      <br>
+      <hr>
+      <br>
+      Selecting the model with degree 4 as it is not overfitting neither underfitting and has less error.
+      </div>
+    </div>
+  </section>
+
+  <section class="section-train-data">
+    <div class="trans-box">
+      <div class="main-heading-yellow">Test data</div>
+      <img class="graph" src="{{ url_for ('static', filename='./images/test_clean.png') }}" alt="train-data">
+    </div>
+  </section>
+
+  <section class="section-train-data">
+    <div class="trans-box">
+      <div class="main-heading-yellow">Fitting models to test data</div>
+      <img class="graph" src="{{ url_for ('static', filename='./images/test_100.png') }}" alt="train-data">
+    </div>
+  </section>
+
+  <section class="section-fitting">
+    <div class="trans-box">
+      <div class="main-heading-yellow">Errors on Test data</div>
+      <img class="graph" style="width: 600px; height: 200px;"src="{{ url_for ('static', filename='./images/error_test.png') }}" alt="train-data">
+      <div class="LR-box fitting-content">As we can clearly see that the model with degree 4 gives the least
+      error on the test data, so it is the best model for our data.
+      </div>
+    </div>
+  </section>
+</body>
+</html>
